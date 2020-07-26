@@ -28,45 +28,21 @@ class WeatherListTableViewController: UITableViewController, AddCityDelegate, Se
     }
 
     private var weatherListViewModel = WeatherListViewModel()
+    private var dataSource: WeatherDataSource?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
-
-    // MARK: - Table view data source
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return self.weatherListViewModel.numberOfRowsInSection()
+        
+        //Data Source Init
+        self.dataSource = WeatherDataSource(self.weatherListViewModel)
+        self.tableView.dataSource = self.dataSource
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
         //Can also be done by editing Row Height in the Size Inspector of the Table View in Storyboard
         return 100
     }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherCell", for: indexPath) as! WeatherCell
         
-        let weatherVM = self.weatherListViewModel.modelAt(indexPath.row)
-        // Configure the cell...
-        
-        cell.configure(weatherVM)
-                
-        return cell
-    }
-    
     // MARK: - Navigation
 
     //6. SET THE DELEGATE IN THE PrepareSegue
