@@ -34,20 +34,35 @@ struct WeatherListViewModel {
     
     private mutating func toCelsius() {
        weatherListViewModel = weatherListViewModel.map({vm in
-            let weatherModel = vm
-            weatherModel.weather.currentTemperature.temperature.value = (weatherModel.weather.currentTemperature.temperature.value - 32) * 5/9
+            var weatherModel = vm
+            
+            weatherModel.weather.currentTemperature.temperature = celciusCalc(weatherModel.weather.currentTemperature.temperature)
+            weatherModel.weather.currentTemperature.tempMin = celciusCalc(weatherModel.weather.currentTemperature.tempMin)
+            weatherModel.weather.currentTemperature.tempMax = celciusCalc(weatherModel.weather.currentTemperature.tempMax)
+
             return weatherModel
         })
     }
     
+    private func celciusCalc(_ temp: Double) -> Double{
+        return (temp - 32) * 5/9
+    }
+    
     private mutating func toFahrenheit() {
         weatherListViewModel = weatherListViewModel.map({vm in
-             let weatherModel = vm
-            weatherModel.weather.currentTemperature.temperature.value = (weatherModel.weather.currentTemperature.temperature.value * 9/5) + 32
+            var weatherModel = vm
+            
+            weatherModel.weather.currentTemperature.temperature = fahrenheitCalc(weatherModel.weather.currentTemperature.temperature)
+            weatherModel.weather.currentTemperature.tempMin = fahrenheitCalc(weatherModel.weather.currentTemperature.tempMin)
+            weatherModel.weather.currentTemperature.tempMax = fahrenheitCalc(weatherModel.weather.currentTemperature.tempMax)
+
             return weatherModel
          })
     }
     
+    private func fahrenheitCalc(_ temp: Double) -> Double{
+        return (temp * 9/5) + 32
+    }
 }
 
 struct WeatherViewModel {
@@ -56,18 +71,18 @@ struct WeatherViewModel {
 
 extension WeatherViewModel {
     var name: String {
-        return self.weather.name.value.capitalized
+        return self.weather.name.capitalized
     }
     
     var currentTemperature: Double {
-        return self.weather.currentTemperature.temperature.value
+        return self.weather.currentTemperature.temperature
     }
     
     var tempMin: Double {
-        return self.weather.currentTemperature.tempMin.value
+        return self.weather.currentTemperature.tempMin
     }
     
     var tempMax: Double {
-        return self.weather.currentTemperature.tempMax.value
+        return self.weather.currentTemperature.tempMax
     }
 }

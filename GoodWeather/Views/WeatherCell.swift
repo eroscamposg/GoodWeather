@@ -26,7 +26,7 @@ class WeatherCell: UITableViewCell {
     }
     
     func configure(_ vm: WeatherViewModel) {
-        self.cityNameLabel.text = vm.weather.name.value
-        self.temperatureLabel.text = "\(vm.weather.currentTemperature.temperature.value.formatAsDegree)"
+        self.cityNameLabel.text = vm.weather.name
+        self.temperatureLabel.text = "\(vm.weather.currentTemperature.temperature.formatAsDegree)"
     }
 }
