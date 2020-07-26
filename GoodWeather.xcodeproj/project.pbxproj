@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0032D76724CE03AF00AEF49D /* GenericDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0032D76624CE03AF00AEF49D /* GenericDataSource.swift */; };
 		004DB04324CCB7D2001D9E31 /* AddCityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004DB04224CCB7D2001D9E31 /* AddCityViewModel.swift */; };
 		004DB04624CCBBC9001D9E31 /* BindingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004DB04524CCBBC9001D9E31 /* BindingTextField.swift */; };
 		004DB04824CCC99A001D9E31 /* WeatherDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004DB04724CCC99A001D9E31 /* WeatherDetailViewController.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0032D76624CE03AF00AEF49D /* GenericDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericDataSource.swift; sourceTree = "<group>"; };
 		004DB04224CCB7D2001D9E31 /* AddCityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCityViewModel.swift; sourceTree = "<group>"; };
 		004DB04524CCBBC9001D9E31 /* BindingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingTextField.swift; sourceTree = "<group>"; };
 		004DB04724CCC99A001D9E31 /* WeatherDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailViewController.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				00D568CC24CD074F00DFDA28 /* WeatherDataSource.swift */,
+				0032D76624CE03AF00AEF49D /* GenericDataSource.swift */,
 			);
 			path = "Data Sources";
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 				00C8FAA824CB70DA0065B8E2 /* SettingsTableViewController.swift in Sources */,
 				00951E4E24C39F9900F47F4E /* AppDelegate.swift in Sources */,
 				00C8FAAD24CB7B830065B8E2 /* Weather.swift in Sources */,
+				0032D76724CE03AF00AEF49D /* GenericDataSource.swift in Sources */,
 				00D568CD24CD074F00DFDA28 /* WeatherDataSource.swift in Sources */,
 				00951E6524C3A43D00F47F4E /* AddCityWeatherViewController.swift in Sources */,
 				00951E6924C3A93400F47F4E /* Color.swift in Sources */,

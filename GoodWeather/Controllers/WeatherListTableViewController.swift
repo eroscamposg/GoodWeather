@@ -19,6 +19,10 @@ class WeatherListTableViewController: UITableViewController, AddCityDelegate, Se
     func addCityViewControllerDidSave(vm: WeatherViewModel) {
         print("NAME: \(vm.weather.name)")
         weatherListViewModel.addWeatherViewModel(vm)
+        
+        //FUNCTION NECESSARY TO UPDATE ITEMS WHEN USING GENERIC
+        self.dataSource.updateItems(self.weatherListViewModel.weatherListViewModel)
+        
         self.tableView.reloadData()
     }
     
@@ -28,13 +32,22 @@ class WeatherListTableViewController: UITableViewController, AddCityDelegate, Se
     }
 
     private var weatherListViewModel = WeatherListViewModel()
-    private var dataSource: WeatherDataSource?
+    //private var dataSource: WeatherDataSource?
+    private var dataSource: GenericDataSource<WeatherCell, WeatherViewModel>!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //Data Source Init
-        self.dataSource = WeatherDataSource(self.weatherListViewModel)
+        //self.dataSource = WeatherDataSource(self.weatherListViewModel)
+        
+        //WHEN ADDING AN ARRAY, YOU ONLY PASS A COPY, THAT WHY items IN THE GenericDataSource CLASS DOESNT AUOT-UPDATE WITH CHANGES
+        self.dataSource = GenericDataSource(cellIdentifier: "WeatherCell", items: self.weatherListViewModel.weatherListViewModel, { cell, vm in
+            cell.cityNameLabel.text = vm.name
+            cell.temperatureLabel.text = vm.currentTemperature.formatAsDegree
+        })
+        
         self.tableView.dataSource = self.dataSource
     }
 
